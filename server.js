@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
-const errorHandler = require('./middleware/error')
+const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
 
@@ -31,9 +31,9 @@ if (process.env.NODE_ENV === 'development'){
 //Mount routers
 app.use('/api/v1/bootcamps',bootcamps);
 
-app.use(errorHandler)
+app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT,console.log(`server running on${process.env.NODE_ENV} PORT ${PORT}`.yellow.bold));
 
@@ -41,5 +41,5 @@ const server = app.listen(PORT,console.log(`server running on${process.env.NODE_
 process.on('unhandledRejection',(err,promise)=>{
    console.log(`Error : ${err.message}.red`);
    //Close server & exit process
-   server.close(()=> process.exit(1))
+   server.close(()=> process.exit(1));
 });
