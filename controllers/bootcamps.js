@@ -80,7 +80,6 @@ query = query.skip(startIndex).limit(limit);
 // @route GET /api/v1/bootcamp/:id
 // @acces Public
 exports.getBootcamp =asyncHandler( async (req,res,next) =>{
-   
         const bootcamp = await Bootcamp.findById(req.params.id);
         if (!bootcamp) {
            return   next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`,404));
