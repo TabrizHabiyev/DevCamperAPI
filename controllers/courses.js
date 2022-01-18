@@ -24,6 +24,7 @@ exports.getCourses = asyncHandler (async (req,res,next) => {
 
     res.status(200).json({
         success: true,
+        count: courses.length,
         data: courses
     });
 });
