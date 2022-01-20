@@ -56,9 +56,22 @@ exports.login = asyncHandler(async (req,res,next)=>{
         );
     }
 
-  
+    
    // Create token
    const token = user.getSingedJwtToken();
  
    res.status(200).json({success: true , token});
  });
+
+
+ // @desc  Get current logged in user 
+ // @route POST /api/v1/auth/me
+ // @acces Private
+exports.getMe =  asyncHandler(async (req,res,next) =>{
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success:true,
+        data: user
+    })
+})
